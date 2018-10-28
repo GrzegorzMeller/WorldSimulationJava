@@ -1,0 +1,834 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package polab;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.List;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.lang.String;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import javax.swing.JLabel;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+/**
+ *
+ * @author grzes
+ */
+public class SwingWorld extends javax.swing.JFrame implements KeyListener {
+
+    /**
+     * Creates new form SwingWorld
+     */
+    public SwingWorld(int a, int b, World world) {
+//        jFrame1.setVisible(true);
+ addKeyListener(this);
+    setFocusable(true);
+    setFocusTraversalKeysEnabled(false);
+            w=world;
+        board_height=a;
+        board_width=b;
+        initComponents();
+        	jButton1.setFocusable(false);
+                jToggleButton1.setFocusable(false);
+                jButton2.setFocusable(false);
+                jButton3.setFocusable(false);
+                jButton4.setFocusable(false);
+                jButton5.setFocusable(false);
+                jButton6.setFocusable(false);
+                jButton7.setFocusable(false);
+                jButton8.setFocusable(false);
+                jButton9.setFocusable(false);
+                jButton10.setFocusable(false);
+                jButton11.setFocusable(false);
+                jButton12.setFocusable(false);
+                jButton13.setFocusable(false);
+        this.setVisible(true);
+        panelGroup = new JPanel[a][b];
+        for(int i=0;i<a;i++){
+            for(int j=0;j<b;++j){
+            panelGroup[i][j] =new JPanel();
+            }
+        }
+        for(int i=0;i<a;i++){
+            for(int j=0;j<b;j++){ 
+            panelGroup[i][j].setLayout(null);
+            panelGroup[i][j].setBackground(Color.WHITE);
+            panelGroup[i][j].setSize(25, 25);
+            panelGroup[i][j].setLocation(100+(j*25)-8, 100+(i*25)-32);
+            panelGroup[i][j].setVisible(true);
+            this.add(panelGroup[i][j]);
+            this.revalidate();
+            this.repaint();
+           
+            }
+        }
+    }
+     public void keyPressed(KeyEvent e) {
+    jLabel3.setText("keyPressed");
+    
+  }
+     public void keyReleased(KeyEvent e) {
+    //jLabel3.setText("jest!");
+
+  }
+public void CleanBoard(int a, int b){
+         for(int i=0;i<a;i++){
+            for(int j=0;j<b;j++){ 
+            panelGroup[i][j].setBackground(Color.WHITE);
+            this.revalidate();
+            this.repaint();
+           
+            }
+        }
+         this.revalidate();
+       this.repaint();
+}
+public Color CheckPosition(int y, int x){
+     Color a = panelGroup[y][x].getBackground();
+     return a;
+}
+public void CleanOnPosition(int y, int x){
+     panelGroup[y][x].setBackground(Color.WHITE);
+     this.revalidate();
+       this.repaint();
+}
+public int ReturnKeyValue(){
+    return key_clicked;
+}
+public void CleanKey(){
+    key_clicked =0;
+    jLabel3.setText("0");
+}
+public void init(){
+        JLabel label = new JLabel();
+        label.setText("HELLO SWING!");
+        label.setVisible(true);     
+        add(label);
+        revalidate();
+        
+}
+    
+public void DisplayOrganism(int y, int x, String color)
+{  
+    if(color=="pink"){
+       panelGroup[y][x].setBackground(Color.PINK);
+    }
+    else if(color=="gray"){
+        panelGroup[y][x].setBackground(Color.GRAY);
+    }
+    else if(color=="red"){
+        panelGroup[y][x].setBackground(Color.RED);
+    }
+    else if(color=="green"){
+        panelGroup[y][x].setBackground(Color.GREEN);
+    }
+    else if(color=="yellow"){
+        panelGroup[y][x].setBackground(Color.YELLOW);
+    }
+    else if(color=="blue"){
+        panelGroup[y][x].setBackground(Color.BLUE);
+    }
+     else if(color=="light_gray"){
+        panelGroup[y][x].setBackground(Color.LIGHT_GRAY);
+    }
+    else if(color=="black"){
+        panelGroup[y][x].setBackground(Color.BLACK);
+    }
+    else if(color=="cyan"){
+        panelGroup[y][x].setBackground(Color.CYAN);
+    }
+    else if(color=="magenta"){
+        panelGroup[y][x].setBackground(Color.MAGENTA);
+    }
+    else if(color=="dark_gray"){
+        panelGroup[y][x].setBackground(Color.DARK_GRAY);
+    }
+       this.revalidate();
+       this.repaint();
+    
+    
+}
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jFrame1 = new javax.swing.JFrame();
+        jFrame2 = new javax.swing.JFrame();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+
+        jLabel1.setText("jLabel");
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
+        jFrame2.getContentPane().setLayout(jFrame2Layout);
+        jFrame2Layout.setHorizontalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame2Layout.setVerticalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
+
+        jLabel2.setText("jLabel2");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
+        jLabel3.setText("jLabel3");
+
+        jButton1.setText("new turn!");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jToggleButton1.setText("special skill ");
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton1MouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("load file");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton2MousePressed(evt);
+            }
+        });
+
+        jButton3.setText("save to file");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        jButton4.setForeground(new java.awt.Color(255, 0, 51));
+        jButton4.setText("fox");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+
+        jButton5.setForeground(new java.awt.Color(255, 204, 204));
+        jButton5.setText("wolf");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        jButton6.setForeground(new java.awt.Color(153, 153, 153));
+        jButton6.setText("sheep");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        jButton7.setForeground(new java.awt.Color(102, 255, 102));
+        jButton7.setText("turtle");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        jButton8.setForeground(new java.awt.Color(255, 255, 0));
+        jButton8.setText("antelope");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
+        jButton9.setForeground(new java.awt.Color(204, 204, 204));
+        jButton9.setText("grass");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
+
+        jButton10.setForeground(new java.awt.Color(102, 102, 102));
+        jButton10.setText("sow thistle");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
+
+        jButton11.setText("guarana");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
+
+        jButton12.setForeground(new java.awt.Color(0, 255, 255));
+        jButton12.setText("blueberries");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
+
+        jButton13.setForeground(new java.awt.Color(204, 0, 204));
+        jButton13.setText("sosnowsky");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton5)
+                    .addComponent(jButton9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton8)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jToggleButton1))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(23, 23, 23))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton5)
+                            .addComponent(jButton6)
+                            .addComponent(jButton4)
+                            .addComponent(jButton7)
+                            .addComponent(jButton8))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton9)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButton12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton11)
+                                    .addComponent(jButton13))))
+                        .addGap(6, 6, 6))))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        jLabel2.setText("clicked!");
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+       String pom = String.valueOf(evt.getX());
+       String pom2 = String.valueOf(evt.getY());
+       jLabel2.setText(pom+", "+pom2);
+     //  panelGroup[(evt.getY()-100)/25][(evt.getX()-100)/25].setBackground(Color.BLUE);
+       int pos_x=(evt.getX()-100)/25;
+       int pos_y=(evt.getY()-100)/25;
+       if(pos_x<=20 && pos_y<=20 && pos_x>=0 && pos_y>=0){
+                  if(create_new_organism.equals("FOX")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.RED);
+                     Fox fox = new Fox(w);
+                     Animal a = fox;
+                     Organism o = a; 
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                  else if(create_new_organism.equals("SHEEP")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.GRAY);
+                     Sheep sheep = new Sheep(w);
+                     Animal a = sheep;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                  else if(create_new_organism.equals("ANTELOPE")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.YELLOW);
+                     Antelope antelope = new Antelope(w);
+                     Animal a = antelope;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                  else if(create_new_organism.equals("TURTLE")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.GREEN);
+                     Turtle turtle = new Turtle(w);
+                     Animal a = turtle;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                  else if(create_new_organism.equals("WOLF")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.PINK);
+                     Wolf wolf = new Wolf(w);
+                     Animal a = wolf;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                 else if(create_new_organism.equals("GRASS")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.LIGHT_GRAY);
+                     Grass grass = new Grass(w);
+                     Plant a = grass;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                  else if(create_new_organism.equals("SNOWTHISTLE")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.DARK_GRAY);
+                     SowThistle sowThistle = new SowThistle(w);
+                     Plant a = sowThistle;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                 else if(create_new_organism.equals("GUARANA")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.BLACK);
+                     Guarana guarana = new Guarana(w);
+                     Plant a = guarana;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                 else if(create_new_organism.equals("BLUEBERRIES")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.CYAN);
+                     Blueberries blueberries = new Blueberries(w);
+                     Plant a = blueberries;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                 else if(create_new_organism.equals("SOSNOWSKY")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.MAGENTA);
+                     Sosnowsky sosnowsky = new Sosnowsky(w);
+                     Plant a = sosnowsky;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }}
+    }//GEN-LAST:event_formMouseClicked
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+         key_clicked = evt.getKeyCode();
+         jLabel3.setText(String.valueOf(key_clicked));
+    }//GEN-LAST:event_formKeyPressed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        w.newRound();
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+        // TODO add your handling code here:
+    //  jLabel3.setText("HELLO");
+    }//GEN-LAST:event_formKeyTyped
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        // TODO add your handling code here:
+      //  jLabel3.setText("HELLO");
+    }//GEN-LAST:event_formKeyReleased
+
+    private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+        // TODO add your handling code here:
+        jToggleButton1.setSelected(true);
+        w.activateSpecialSkill();
+    }//GEN-LAST:event_jToggleButton1MouseClicked
+
+    private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
+        // TODO add your handling code here:
+         w.CleanList();
+        String lineContents=null;
+        CleanBoard(board_height, board_width);
+        this.revalidate();
+        this.repaint();
+        try {
+            BufferedReader br=new BufferedReader (new FileReader ("filename.txt"));
+            String str = br.readLine();
+            int count=0;
+            int pos_x=0;
+            int pos_y=0;
+            int superPower=0;
+            int keyClose=0;
+            superPower=str.charAt(str.length()-4)-48;
+            int currentForce=0;
+            keyClose=str.charAt(str.length()-2)-48;
+            String animal="";
+            for (int i = 0; i < str.length(); i++) {
+                 if (str.charAt(i) == ' ') {
+                     if(!"".equals(animal)){
+                     int f = animal.charAt(0)-48;
+                      if(f>0 && f<=9){
+                          currentForce=Integer.parseInt(animal);
+                      }
+                      animal="";
+                    }
+                 }
+                 else if(str.charAt(i)==','){
+                     animal="";
+                     pos_y++;
+                     pos_x=0;
+                 }
+                 else { 
+                animal+=str.charAt(i);
+                }
+                
+                 
+                 if(animal.equals("EMPTY")){
+                     pos_x++;
+                 }
+                 if(animal.equals("HUMAN")){
+                    // panelGroup[pos_y][pos_x].setBackground(Color.BLUE);
+                     Human human = new Human(w);
+                     human.setSkillTime(superPower);
+                     human.setCountExtraRounds(keyClose);
+                     if(keyClose>0){
+                         human.count_rounds=true;
+                         jToggleButton1.setSelected(true);
+                     }else{
+                         jToggleButton1.setSelected(false);
+                     }
+                     if(superPower>0){
+                         human.setActivateSkill(true);
+                          jToggleButton1.setSelected(true);
+                     }
+                     else{
+                         jToggleButton1.setSelected(false);
+                     }
+                     human.setForce(currentForce);
+                     Animal a = human;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                 else if(animal.equals("FOX")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.RED);
+                     Fox fox = new Fox(w);
+                     fox.setForce(currentForce);
+                     Animal a = fox;
+                     Organism o = a; 
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                  else if(animal.equals("SHEEP")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.GRAY);
+                     Sheep sheep = new Sheep(w);
+                     sheep.setForce(currentForce);
+                     Animal a = sheep;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                  else if(animal.equals("ANTELOPE")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.YELLOW);
+                     Antelope antelope = new Antelope(w);
+                     antelope.setForce(currentForce);
+                     Animal a = antelope;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                  else if(animal.equals("TURTLE")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.GREEN);
+                     Turtle turtle = new Turtle(w);
+                     turtle.setForce(currentForce);
+                     Animal a = turtle;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                  else if(animal.equals("WOLF")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.PINK);
+                     Wolf wolf = new Wolf(w);
+                     wolf.setForce(currentForce);
+                     Animal a = wolf;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                 else if(animal.equals("GRASS")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.LIGHT_GRAY);
+                     Grass grass = new Grass(w);
+                     Plant a = grass;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                  else if(animal.equals("SNOWTHISTLE")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.DARK_GRAY);
+                     SowThistle sowThistle = new SowThistle(w);
+                     Plant a = sowThistle;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                 else if(animal.equals("GUARANA")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.BLACK);
+                     Guarana guarana = new Guarana(w);
+                     Plant a = guarana;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                 else if(animal.equals("BLUEBERRIES")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.CYAN);
+                     Blueberries blueberries = new Blueberries(w);
+                     Plant a = blueberries;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }
+                 else if(animal.equals("SOSNOWSKY")){
+                     panelGroup[pos_y][pos_x].setBackground(Color.MAGENTA);
+                     Sosnowsky sosnowsky = new Sosnowsky(w);
+                     Plant a = sosnowsky;
+                     Organism o = a;
+                     w.addOrganismToWorld(o, pos_y, pos_x);
+                     pos_x++;
+                 }}} catch (FileNotFoundException ex) {
+            Logger.getLogger(SwingWorld.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SwingWorld.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2MousePressed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        String [][] tab = new String[board_height][board_width];
+         StringBuilder builder = new StringBuilder();
+        for(int i=0; i<board_height;++i){
+            for(int j=0;j<board_width;++j){
+                 tab[i][j]=String.valueOf(w.CheckOrganismForceOnPosition(i, j))+" "+w.CheckOrganismTypeOnPosition(i, j)+" ";
+                 builder.append(tab[i][j]);
+                 if(j+1==board_width){
+                     builder.append(", ");
+                 }
+            }
+        }
+        builder.append(String.valueOf(w.findSpecialForce())+" ");
+        builder.append(String.valueOf(w.findKeyClosed())+" ");
+        try (PrintWriter out = new PrintWriter("filename.txt")) {
+        out.println(builder);
+}       catch (FileNotFoundException ex) {
+            Logger.getLogger(SwingWorld.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        create_new_organism="FOX";
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        create_new_organism="WOLF";
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        create_new_organism="SHEEP";
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        create_new_organism="TURTLE";
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // TODO add your handling code here:
+        create_new_organism="ANTELOPE";
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+        create_new_organism="GRASS";
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+        create_new_organism="SNOWTHISTLE";
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        // TODO add your handling code here:
+        create_new_organism="GUARANA";
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        // TODO add your handling code here:
+        create_new_organism="BLUEBERRIES";
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+        create_new_organism="SOSNOWSKY";
+    }//GEN-LAST:event_jButton13ActionPerformed
+    public void stopSkill(){
+        jToggleButton1.setSelected(false);
+        this.revalidate();
+        this.repaint();
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        
+    }
+private World w;
+String create_new_organism;
+private int board_height;
+private int board_width;    
+private int key_clicked;    
+private JPanel[][] panelGroup; 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JFrame jFrame2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JToggleButton jToggleButton1;
+    // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        jLabel3.setText("Maybe?");
+    }
+}
